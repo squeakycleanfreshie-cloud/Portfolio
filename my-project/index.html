@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      body {
+        background: #1a0a2e;
+        overflow-y: scroll;
+        position: relative;
+      }
+
+      .hero {
+        width: 100vw;
+        height: 100vh;
+      }
+
+      #scene {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        image-rendering: pixelated;
+      }
+    
+      .title-card {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        z-index: 1;
+      }
+
+      .title-card h1 {
+        font-family: 'Press Start 2P', monospace;
+        font-size: 56px;
+        color: black;
+      }
+
+      .title-card p {
+        font-family: 'Press Start 2P', monospace;
+        font-size: 24px;
+        color: black;
+        margin-top: 16px;
+      }
+
+      nav {
+        position: absolute;
+        top: 40px;
+        right: 40px;
+        z-index: 10;
+        display: flex;
+        gap: 32px;
+      }
+
+      nav a {
+        font-family: 'Press Start 2P', monospace;
+        font-size: 12px;
+        color: black;
+        text-decoration: none;
+      }
+
+      nav a:hover {
+        color: #92b577;
+      }
+
+      .projects {
+        padding: 80px 60px;
+        background: #1a0a2e;
+      }
+
+      .projects h2 {
+        font-family: 'Press Start 2P', monospace;
+        font-size: 24px;
+        color: #a8d8f0;
+        margin-bottom: 40px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .card {
+        background: #ffffff;
+        border: 3px solid #4a6741;
+        cursor: pointer;
+        transition: transform 0.2s, border-color 0.2s;
+      }
+
+      .card img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        image-rendering: pixelated;
+        display: block;
+      }
+
+      .card p {
+        font-family: 'Press Start 2P', monospace;
+        font-size: 11px;
+        color: #a8d8f0;
+        padding: 16px;
+      }
+
+      .card:hover {
+        transform: translateY(-8px);
+        border-color: #92b577;
+      }
+
+      #portfolio-card img {
+        object-position: left;
+      }
+
+      #clipoz-card img,
+      #warm-card img,
+      #createpad-card img,
+      #funrun-card img {
+        object-position: top;
+      }
+
+      #record {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 80px;
+        height: 80px;
+        cursor: pointer;
+        animation: spin 4s linear infinite;
+        animation-play-state: paused;
+        z-index: 100;
+      }
+
+      #record img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+
+      #record:hover {
+        opacity: 0.8;
+      }
+
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
+      .about {
+        padding: 80px 60px;
+        background: #1a0a2e;
+      }
+
+      .about h2 {
+        font-family: 'Press Start 2P', monospace;
+        font-size: 24px;
+        color: #a8d8f0;
+        margin-bottom: 40px;
+      }
+
+      .about-content {
+        display: flex;
+        gap: 60px;
+        align-items: flex-start;
+      }
+
+      .about-photo {
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        image-rendering: pixelated;
+        border: 3px solid #4a6741;
+        flex-shrink: 0;
+      }
+
+      .about-text p {
+        font-family: 'Press Start 2P', monospace;
+        font-size: 11px;
+        color: #a8d8f0;
+        line-height: 2;
+        margin-bottom: 30px;
+        margin-top: 30px;
+      }
+
+      .about-text h3 {
+        font-family: 'Press Start 2P', monospace;
+        font-size: 16px;
+        color: #92b577;
+        margin-bottom: 20px;
+      }
+
+      .about-text ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .about-text ul li {
+        font-family: 'Press Start 2P', monospace;
+        font-size: 10px;
+        color: #1a0a2e;
+        background: #92b577;
+        padding: 8px 12px;
+        border: 2px solid #4a6741;
+      }
+
+      .hobbies-heading {
+        margin-top: 50px;
+        font-family: 'Press Start 2P', monospace;
+        font-size: 16px;
+        color: #92b577;
+        margin-bottom: 20px;
+      }
+
+      .contact {
+        padding: 80px 60px 120px 60px;
+        background: #1a0a2e;
+      }
+
+      .contact h2 {
+        font-family: 'Press Start 2P', monospace;
+        font-size: 24px;
+        color: #a8d8f0;
+        margin-bottom: 40px;
+        text-align: center;
+      }
+
+      .contact-links {
+        display: flex;
+        gap: 24px;
+        justify-content: center;
+      }
+
+      .contact-links a {
+        font-family: 'Press Start 2P', monospace;
+        font-size: 12px;
+        color: #1a0a2e;
+        background: #92b577;
+        padding: 16px 24px;
+        text-decoration: none;
+        border: 3px solid #4a6741;
+        transition: transform 0.2s, border-color 0.2s;
+      }
+      
+      .contact-links a:hover {
+        transform: translateY(-4px);
+        border-color: #a8d8f0;
+      }
+
+      ::-webkit-scrollbar {
+        display: none;
+      }
+
+      .certificates {
+        padding: 80px 60px;
+        background: #1a0a2e;
+      }
+
+      .certificates h2 {
+        font-family: 'Press Start 2P', monospace;
+        font-size: 24px;
+        color: #a8d8f0;
+        margin-bottom: 40px;
+      }
+
+      .cert-area {
+        position: relative;
+        height: 500px;
+        overflow: hidden;
+      }
+
+      .cert {
+        position: absolute;
+        width: 300px;
+        background: white;
+        padding: 12px 12px 40px 12px;
+        cursor: grab;
+        box-shadow: 4px 4px 0px #4a6741;
+        user-select: none;
+      }
+
+      .cert:nth-child(1) { transform: rotate(-3deg); }
+      .cert:nth-child(2) { transform: rotate(2deg); }
+      .cert:nth-child(3) { transform: rotate(-1deg); }
+      .cert:nth-child(4) { transform: rotate(3deg); }
+      .cert:nth-child(5) { transform: rotate(-2deg); }
+
+      .cert img {
+        width: 100%;
+        display: block;
+      }
+
+      .cert p {
+        font-family: 'Press Start 2P', monospace;
+        font-size: 9px;
+        color: #1a0a2e;
+        text-align: center;
+        margin-top: 12px;
+      }
+
+    </style>
+</head>
+<body>
+  <audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+  <nav>
+    <a href="#projects">Projects</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#certificates">Certificates</a>
+  </nav>
+  <div class="hero">
+    <div class="title-card">
+      <h1>Remy Moreau</h1>
+      <p>Graphic & Web Designer, Filmaker & Multimedia Creator</p>
+    </div>
+    <img src="scene.png" id="scene" />
+  </div>
+
+  <section class="projects" id="projects">
+    <h2>Projects</h2>
+    <div class="grid">
+      <div class="card" id="clipoz-card">
+        <img src="clipoz.png" alt="Clipoz"/>
+        <p>Clipoz</p>
+      </div>
+      <div class="card" id="portfolio-card">
+        <img src="portfolio.png" alt="This Portfolio"/>
+        <p>Portfolio</p>
+      </div>
+      <div class="card" id="warm-card">
+        <img src="warm.png" alt="Warm"/>
+        <p>Warm</p>
+      </div>
+      <div class="card" id="funrun-card">
+        <img src="manly-fun-run.png" alt="Manly Fun Run Rebranding"/>
+        <p>Manly Fun Run Rebranding</p>
+      </div>
+      <div class="card">
+        <img src="https://placehold.co/400x300" alt="Placeholder"/>
+        <p>Futuristic Products Website</p>
+      </div>
+      <div class="card" id="createpad-card">
+        <img src="createpad.png" alt="Createpad"/>
+        <p>Createpad</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <h2>About Me</h2>
+    <div class="about-content">
+      <img src="photo.png" alt="Remy" class="about-photo"/>
+      <div class="about-text">
+        <p>I'm Remy Moreau a school student who lives in Sydney, Australia. I enjoy making multimedia projects - anything from films, to 3D Models, to graphic design. I am currently open to freelance work, or internships.</p>
+        <h3>Skills</h3>
+        <ul>
+          <li>Figma</li>
+          <li>Photoshop</li>
+          <li>Illustrator</li>
+          <li>Procreate</li>
+          <li>HTML / CSS</li>
+          <li>Video Editing</li>
+          <li>3D Modelling</li>
+          <li>Pixel Art</li>
+          <li>Onshape</li>
+          <li>Hardware</li>
+          <li>Canva</li>
+          <li>Logo Design</li>
+        </ul>
+        <h3 class="hobbies-heading">Hobbies</h3>
+        <ul>
+          <li>Skiing</li>
+          <li>Baking</li>
+          <li>Reading</li>
+          <li>Writing</li>
+          <li>Gaming</li>
+          <li>Running</li>
+          <li>Soccer</li>
+          <li>Cooking</li>
+          <li>Drawing</li>
+          <li>Science</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Contact</h2>
+    <div class="contact-links">
+      <a href="mailto:remymoreau12@icloud.com">✉️ Email Me</a>
+      <a href="https://github.com/squeakycleanfreshie-cloud" target="_blank">💻 GitHub</a>
+      <a href="#" target="_blank">▶️ Youtube</a>
+    </div>
+  </section>
+
+  <section class="certificates" id="certificates">
+    <h2>Certificates</h2>
+    <div class="cert-area">
+      <div class="cert" style="top: 100px; left: 5%;">
+        <img src="https://placehold.co/300x200" alt="Certificate"/>
+        <p>Certificate</p>
+      </div>
+      <div class="cert" style="top: 50px; left: 25%;">
+        <img src="https://placehold.co/300x200" alt="Certificate"/>
+        <p>Certificate</p>
+      </div>
+      <div class="cert" style="top: 150px; left: 45%;">
+        <img src="https://placehold.co/300x200" alt="Certificate"/>
+        <p>Certificate</p>
+      </div>
+      <div class="cert" style="top: 80px; left: 63%;">
+        <img src="https://placehold.co/300x200" alt="Certificate"/>
+        <p>Certificate</p>
+      </div>
+      <div class="cert" style="top: 180px; left: 80%;">
+        <img src="https://placehold.co/300x200" alt="Certificate"/>
+        <p>Certificate</p>
+      </div>
+    </div>
+  </section>
+
+  <div id="record" onclick="toggleMusic()">
+    <img src="record.png" alt="record" />
+  </div>
+
+  <script>
+    const hero = document.querySelector('.hero');
+    document.addEventListener('mousemove', function(e) {
+      const x = (e.clientX / window.innerWidth - 0.5) * 20;
+      const y = (e.clientY / window.innerHeight - 0.5) * 10;
+      hero.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    const music = document.getElementById('music');
+
+    function toggleMusic() {
+      if (music.paused) {
+        music.play();
+        document.getElementById('record').style.animationPlayState = 'running';
+      } else {
+        music.pause();
+        document.getElementById('record').style.animationPlayState = 'paused';
+      }
+    }
+
+    const certs = document.querySelectorAll('.cert');
+    certs.forEach(cert => {
+      cert.addEventListener('mousedown', function(e) {
+        const startX = e.clientX - cert.offsetLeft;
+        const startY = e.clientY - cert.offsetTop;
+        cert.style.cursor = 'grabbing';
+        cert.style.zIndex = 999;
+
+        function onMove(e) {
+          cert.style.left = (e.clientX - startX) + 'px';
+          cert.style.top = (e.clientY - startY) + 'px';
+        }
+
+        function onUp() {
+          cert.style.cursor = 'grab';
+          document.removeEventListener('mousemove', onMove);
+          document.removeEventListener('mouseup', onUp);
+        }
+
+        document.addEventListener('mousemove', onMove);
+        document.addEventListener('mouseup', onUp);
+      });
+    });
+  </script>
+</body>
+</html>
