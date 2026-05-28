@@ -1,3 +1,23 @@
+# Remy Moreau — Portfolio
+
+My personal portfolio website built with HTML, CSS and JavaScript.
+
+## Features
+- Pixel art mountain scene background
+- Parallax mouse effect
+- Project showcase grid
+- About me section
+- Draggable certificates
+- Lofi background music
+
+## Built with
+- HTML / CSS / JavaScript
+- Aseprite (pixel art)
+- Press Start 2P font (Google Fonts)
+
+## Live site
+https://squeakycleanfreshie-cloud.github.io/portfolio
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
