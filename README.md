@@ -16,7 +16,7 @@ My personal portfolio website built with HTML, CSS and JavaScript.
 - Press Start 2P font (Google Fonts)
 
 ## Live site
-https://squeakycleanfreshie-cloud.github.io/portfolio
+https://squeakycleanfreshie-cloud.github.io/Portfolio/
 
 # React + Vite
 
